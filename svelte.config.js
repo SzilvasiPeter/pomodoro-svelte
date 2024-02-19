@@ -9,8 +9,8 @@ export default {
       precompress: false,
       strict: true
     }),
-    // paths: {
-    //   base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
-    // }
+    paths: {
+      base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
+    }
   }
 };

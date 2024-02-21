@@ -36,3 +36,33 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+## Deploy to Azure Static Web Application
+
+Copy the connection string from one of the [supported database](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview#supported-databases) in Azure:
+
+```bash
+export DATABASE_CONNECTION_STRING='<YOUR_CONNECTION_STRING>'
+```
+
+First, install the `swa` CLI tool for deployment:
+
+```bash
+npm install -g @azure/static-web-apps-cli
+```
+
+The build configuration needs to be updated in the `svelte.config.js` file. Most importantly, the `fallback` section has to set to the `index.html` value. Once you configured the SWA database connection by following the appropriate [Tutorials](https://learn.microsoft.com/en-us/azure/static-web-apps/database-azure-cosmos-db?tabs=bash) under the Database connection section in the Azure Static Web Apps Documentation, start the static web app with it:
+
+```bash
+swa start ./build --data-api-location swa-db-connections
+```
+
+Go to the <http://localhost:4280> URL that is under the `host.cors.origins` section in the `swa-db-connections/staticwebapp.database.config.json` configuration.
+
+> Note: As you can see, the `./build` folder is selected to start the static web application.
+
+To change other container in the NoSQL database, adapt the following files:
+
+- `staticwebapp.database.config.json`: Replace the database in the `data-source.options.database` and the `entities` section.
+- `staticwebapp.database.schema.gql`: Modify the database schema to match with the selected container.
+- `+page.svelte`: Adapt the CRUD operation according to the new database schema.

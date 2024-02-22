@@ -37,7 +37,7 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
-## Deploy to Azure Static Web Application
+## Emulate Azure Static Web Application locally
 
 Copy the connection string from one of the [supported database](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview#supported-databases) in Azure:
 

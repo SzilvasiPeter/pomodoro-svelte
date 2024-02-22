@@ -39,7 +39,7 @@ You can preview the production build with `npm run preview`.
 
 ## Emulate Azure Static Web Application locally
 
-Copy the connection string from one of the [supported database](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview#supported-databases) in Azure:
+Copy the connection string from one of the [supported database](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview#supported-databases) in Azure and set to the environment variable:
 
 ```bash
 export DATABASE_CONNECTION_STRING='<YOUR_CONNECTION_STRING>'

@@ -9,6 +9,7 @@ export default {
       precompress: false,
       strict: true
     }),
+    // The `paths` configuration is necessary for the GitHub page deployment
     paths: {
       base: process.argv.includes('dev') ? '' : process.env.BASE_PATH
     }

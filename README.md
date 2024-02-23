@@ -45,7 +45,13 @@ Copy the connection string from one of the [supported database](https://learn.mi
 export DATABASE_CONNECTION_STRING='<YOUR_CONNECTION_STRING>'
 ```
 
-First, install the `swa` CLI tool for deployment:
+To add the environment permanently, create a `.env` file with the following content:
+
+```
+DATABASE_CONNECTION_STRING='<YOUR_CONNECTION_STRING>'
+```
+
+Next, install the `swa` CLI tool for deployment:
 
 ```bash
 npm install -g @azure/static-web-apps-cli

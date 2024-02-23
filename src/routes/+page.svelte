@@ -148,7 +148,7 @@
 <h1>Welcome to SvelteKit</h1>
 <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
 
-<h1>Static Web Apps Database Connections</h1>
+<h1>Static Web Apps with Database Connections</h1>
 <blockquote>Open the console in the browser developer tools to see the API responses.</blockquote>
 <div>
   <button id="list" on:click={list}>List</button>

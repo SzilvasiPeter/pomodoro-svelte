@@ -5,9 +5,10 @@
 
   dayjs.extend(duration);
 
-  let isActive = false;
-  let pomodoro = dayjs.duration(25, 'minutes');
   let interval;
+  let isActive = false;
+  let minutes = 25;
+  $: pomodoro = dayjs.duration(minutes, 'minutes');
 
   onMount(() => {
     resetTimer();
@@ -30,7 +31,7 @@
   function resetTimer() {
     clearInterval(interval);
     isActive = false;
-    pomodoro = dayjs.duration(25, 'minutes');
+    pomodoro = dayjs.duration(minutes, 'minutes');
   }
 
   function toggleTimer() {
@@ -46,10 +47,10 @@
 
 <div>
   <h1>Pomodoro</h1>
-  <p></p>
+  <input bind:value={minutes} disabled={isActive} type="number" />
   <button on:click={toggleTimer}>{isActive ? 'Pause' : 'Start'}</button>
   {#if isActive}
     <button on:click={resetTimer}>Finish</button>
   {/if}
-  <p>{pomodoro.format('mm:ss')}</p>
+  <p>{pomodoro.format('HH:mm:ss')}</p>
 </div>

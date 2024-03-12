@@ -56,7 +56,7 @@
     const id = '4';
     const data = {
       id: id,
-      category: "break",
+      category: 'break',
       user: 'Jane Doe',
       duration: 10
     };

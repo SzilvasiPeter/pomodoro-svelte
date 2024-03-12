@@ -1,14 +1,16 @@
 <script>
   async function list() {
     const query = `
-        {
-          people {
+      query Pomodoros {
+        pomodoros {
             items {
-              id
-              Name
+                id
+                category
+                user
+                duration
             }
-          }
-        }`;
+        }
+      }`;
 
     const endpoint = '/data-api/graphql';
     const response = await fetch(endpoint, {
@@ -17,19 +19,21 @@
       body: JSON.stringify({ query: query })
     });
     const result = await response.json();
-    console.table(result.data.people.items);
+    console.table(result.data.pomodoros.items);
   }
 
   async function get() {
-    const id = '1';
+    const id = '2';
 
     const gql = `
-    query getById($id: ID!) {
-      person_by_pk(id: $id) {
-        id
-        Name
-      }
-    }`;
+      query Pomodoro_by_pk($id: ID!) {
+        pomodoro_by_pk(id: $id) {
+            id
+            category
+            user
+            duration
+        }
+      }`;
 
     const query = {
       query: gql,
@@ -45,23 +49,27 @@
       body: JSON.stringify(query)
     });
     const result = await response.json();
-    console.table(result.data.person_by_pk);
+    console.table(result.data.pomodoro_by_pk);
   }
 
   async function update() {
-    const id = '1';
+    const id = '4';
     const data = {
       id: id,
-      Name: 'Molly'
+      category: "break",
+      user: 'Jane Doe',
+      duration: 10
     };
 
     const gql = `
-    mutation update($id: ID!, $_partitionKeyValue: String!, $item: UpdatePersonInput!) {
-      updatePerson(id: $id, _partitionKeyValue: $_partitionKeyValue, item: $item) {
-        id
-        Name
-      }
-    }`;
+      mutation UpdatePomodoro($id: ID!, $_partitionKeyValue: String!, $item: UpdatePomodoroInput!) {
+        updatePomodoro(id: $id, _partitionKeyValue: $_partitionKeyValue, item: $item) {
+            id
+            category
+            user
+            duration
+        }
+      }`;
 
     const query = {
       query: gql,
@@ -80,20 +88,24 @@
     });
 
     const result = await res.json();
-    console.table(result.data.updatePerson);
+    console.table(result.data.updatePomodoro);
   }
 
   async function create() {
     const data = {
-      id: '3',
-      Name: 'Pedro'
+      id: '6',
+      category: 'work',
+      user: 'Bob',
+      duration: 20
     };
 
     const gql = `
-    mutation create($item: CreatePersonInput!) {
-      createPerson(item: $item) {
-        id
-        Name
+    mutation CreatePomodoro($item: CreatePomodoroInput!) {
+      createPomodoro(item: $item) {
+          id
+          category
+          user
+          duration
       }
     }`;
 
@@ -112,16 +124,19 @@
     });
 
     const response = await result.json();
-    console.table(response.data.createPerson);
+    console.table(response.data.createPomodoro);
   }
 
   async function del() {
-    const id = '3';
+    const id = '6';
 
     const gql = `
-    mutation del($id: ID!, $_partitionKeyValue: String!) {
-      deletePerson(id: $id, _partitionKeyValue: $_partitionKeyValue) {
-        id
+    mutation DeletePomodoro($id: ID!, $_partitionKeyValue: String!) {
+      deletePomodoro(id: $id, _partitionKeyValue: $_partitionKeyValue) {
+          id
+          category
+          user
+          duration
       }
     }`;
 

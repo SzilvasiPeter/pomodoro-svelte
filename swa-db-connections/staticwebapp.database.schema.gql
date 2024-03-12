@@ -1,4 +1,6 @@
-type Person @model {
+type Pomodoro @model {
   id: ID
-  Name: String
+  category: String
+  user: String
+  duration: Int
 }

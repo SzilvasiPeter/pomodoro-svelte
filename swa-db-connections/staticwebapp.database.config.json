@@ -4,7 +4,7 @@
     "database-type": "cosmosdb_nosql",
     "connection-string": "@env('DATABASE_CONNECTION_STRING')",
     "options": {
-      "database": "MyTestPersonDatabase",
+      "database": "personal_database",
       "schema": "staticwebapp.database.schema.gql"
     }
   },
@@ -26,8 +26,8 @@
     }
   },
   "entities": {
-    "Person": {
-      "source": "MyTestPersonContainer",
+    "Pomodoro": {
+      "source": "pomodoro_container",
       "permissions": [
         {
           "actions": ["*"],

@@ -77,19 +77,21 @@
 </script>
 
 <dialog id="confirmation-dialog">
-  <form>
-    <h4>Time</h4>
-    <hr/>
-    <label for="workTime">Pomodoro: {workTime} minutes</label>
-    <input type="range" bind:value={workTime} min="1" max="120" step="1" />
-    <label for="shortBreakTime">Short Break: {shortBreakTime} minutes</label>
-    <input type="range" bind:value={shortBreakTime} min="1" max="120" step="1" />
-    <label for="longBreakTime">Long Break: {longBreakTime} minutes</label>
-    <input type="range" bind:value={longBreakTime} min="1" max="120" step="1" />
-    <br/>
-    <button type="button" on:click={saveSettings}>Save</button>
-    <button type="button" on:click={closeSettings}>Close</button>
-  </form>
+  <h3>Time</h3>
+  
+  <hr/>
+
+  <label for="workTime">Pomodoro: {workTime} minutes</label>
+  <input type="range" bind:value={workTime} min="1" max="120" step="1" />
+  <label for="shortBreakTime">Short Break: {shortBreakTime} minutes</label>
+  <input type="range" bind:value={shortBreakTime} min="1" max="120" step="1" />
+  <label for="longBreakTime">Long Break: {longBreakTime} minutes</label>
+  <input type="range" bind:value={longBreakTime} min="1" max="120" step="1" />
+  
+  <br/>
+
+  <button type="button" on:click={saveSettings}>Save</button>
+  <button type="button" on:click={closeSettings}>Close</button>
 </dialog>
 
 <header>

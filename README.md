@@ -1,19 +1,3 @@
-# create-svelte
-
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
 ## Developing
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
@@ -51,16 +35,10 @@ To add the environment permanently, create a `.env` file with the following cont
 DATABASE_CONNECTION_STRING='<YOUR_CONNECTION_STRING>'
 ```
 
-Next, install the `swa` CLI tool for deployment:
-
-```bash
-npm install -g @azure/static-web-apps-cli
-```
-
 The build configuration needs to be updated in the `svelte.config.js` file. Most importantly, the `fallback` section has to set to the `index.html` value. Once you configured the SWA database connection by following the appropriate [Tutorials](https://learn.microsoft.com/en-us/azure/static-web-apps/database-azure-cosmos-db?tabs=bash) under the Database connection section in the Azure Static Web Apps Documentation, start the static web app with it:
 
 ```bash
-swa start ./build --data-api-location swa-db-connections
+npx swa start ./build --data-api-location swa-db-connections
 ```
 
 Go to the <http://localhost:4280> URL that is under the `host.cors.origins` section in the `swa-db-connections/staticwebapp.database.config.json` configuration.

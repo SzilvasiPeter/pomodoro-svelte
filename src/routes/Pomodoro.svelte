@@ -8,7 +8,7 @@
   let workTime = 25;
   let shortBreakTime = 5;
   let longBreakTime = 10;
-  
+
   let dialog;
   let interval;
   let isActive = false;
@@ -53,14 +53,21 @@
 
   function saveSettings() {
     pomodoro = dayjs.duration(workTime, 'minutes');
-    localStorage.setItem('pomodoroSettings', JSON.stringify({ workTime, shortBreakTime, longBreakTime }));
+    localStorage.setItem(
+      'pomodoroSettings',
+      JSON.stringify({ workTime, shortBreakTime, longBreakTime })
+    );
     dialog.close();
   }
 
   function loadSettings() {
     const savedSettings = localStorage.getItem('pomodoroSettings');
     if (savedSettings) {
-      const { workTime: savedWorkTime, shortBreakTime: savedShortBreakTime, longBreakTime: savedLongBreakTime } = JSON.parse(savedSettings);
+      const {
+        workTime: savedWorkTime,
+        shortBreakTime: savedShortBreakTime,
+        longBreakTime: savedLongBreakTime
+      } = JSON.parse(savedSettings);
       workTime = savedWorkTime;
       shortBreakTime = savedShortBreakTime;
       longBreakTime = savedLongBreakTime;
@@ -73,13 +80,13 @@
 
   const showDialogClick = () => {
     dialog['showModal']();
-	};
+  };
 </script>
 
 <dialog id="confirmation-dialog">
   <h3>Time</h3>
-  
-  <hr/>
+
+  <hr />
 
   <label for="workTime">Pomodoro: {workTime} minutes</label>
   <input type="range" bind:value={workTime} min="1" max="120" step="1" />
@@ -87,8 +94,8 @@
   <input type="range" bind:value={shortBreakTime} min="1" max="120" step="1" />
   <label for="longBreakTime">Long Break: {longBreakTime} minutes</label>
   <input type="range" bind:value={longBreakTime} min="1" max="120" step="1" />
-  
-  <br/>
+
+  <br />
 
   <button type="button" on:click={saveSettings}>Save</button>
   <button type="button" on:click={closeSettings}>Close</button>

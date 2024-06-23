@@ -1,10 +1,1 @@
-{
-  "trailingSlash": "auto",
-  "routes": [
-    {
-      "route": "/data-api/*",
-      "methods": ["GET", "POST", "PUT", "DELETE"],
-      "allowedRoles": ["anonymous"]
-    }
-  ]
-}
+{ }
